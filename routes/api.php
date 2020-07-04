@@ -29,7 +29,7 @@ Route::group(['prefix' => 'restaurants'], function() {
 
 Route::group(['prefix' => 'reservas'], function() {
     Route::get('/getReservas', 'RestaurantsController@getReservas');
-    Route::post('/SaveRestaurant', 'RestaurantsController@SaveRestaurant');
+    Route::post('/SaveReservas', 'RestaurantsController@SaveReservas');
     // Route::get('/getCities', 'RestaurantsController@getCities');
     Route::delete('/deleteReservas/{id}', 'RestaurantsController@deleteReservas');
     Route::post('/EditReservas', 'RestaurantsController@EditReservas');

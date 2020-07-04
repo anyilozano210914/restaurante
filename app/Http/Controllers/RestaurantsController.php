@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\City;
 use App\Reservas;
 use App\Restaurant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -114,6 +115,34 @@ class RestaurantsController extends Controller
             DB::rollBack();
         }if($status){
             return ['se edito exitosamente las reservas'];
+        }else {
+            return $result;
+        }
+    }
+
+    public function SaveReservas(Request $request)
+    {
+        $status = false;
+        $result = null;
+        DB::beginTransaction();
+        try {
+            // return $request;
+            $fecha = Carbon::parse($request->fecha)->format('Y-m-d');
+            $hora = Carbon::parse($request->hora)->format('H:i:s');
+            $restaurante = new Reservas();
+            $restaurante->client = $request->client;
+            $restaurante->documento = $request->documento;
+            $restaurante->fecha = $fecha;
+            $restaurante->hora = $hora;
+            $restaurante->save();
+
+            $status = true;
+            DB::commit();
+        } catch (\Throwable $th) {
+            $result = $th->getMessage();
+            DB::rollBack();
+        }if($status){
+            return ['se creo exitosamente la reserva'];
         }else {
             return $result;
         }

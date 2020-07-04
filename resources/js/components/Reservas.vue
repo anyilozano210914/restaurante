@@ -59,7 +59,7 @@ export default {
             })
         },
         goToCreateReservas(){
-            this.$router.push('/CreateRestaurant');
+            this.$router.push('/CreateReserva');
         },
         deleteReservas(item){
             axios.delete('/api/reservas/deleteReservas/' + item.id)

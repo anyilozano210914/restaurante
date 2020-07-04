@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     goToCreateReservas: function goToCreateReservas() {
-      this.$router.push('/CreateRestaurant');
+      this.$router.push('/CreateReserva');
     },
     deleteReservas: function deleteReservas(item) {
       var _this2 = this;
